@@ -13,11 +13,14 @@ public class Nguoi {
     private String hoTen;
     // 0 : nam
     // 1 : nữ
-    private int gioiTinh;
+    private byte gioiTinh;
     private String sdt;
     private LocalDate ngaySinh;
 
-    public Nguoi(int cccd, String hoTen, int gioiTinh, String sdt, LocalDate ngaySinh) {
+    public Nguoi() {
+    }
+
+    public Nguoi(int cccd, String hoTen, byte gioiTinh, String sdt, LocalDate ngaySinh) {
         this.cccd = cccd;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
@@ -25,9 +28,26 @@ public class Nguoi {
         this.ngaySinh = ngaySinh;
     }
 
-    public Nguoi(int cccd, String hoTen, int gioiTinh, String sdt, String ngaySinh) {
+    public Nguoi(int cccd, String hoTen, byte gioiTinh, String sdt, String ngaySinh) {
         this(cccd, hoTen, gioiTinh, sdt,
                 LocalDate.parse(ngaySinh, DateTimeFormatter.ofPattern(CauHinh.FOMAT_DATE)));
+    }
+
+    public void nhapInfo() {
+        System.out.print("CCCD: ");
+        this.cccd = CauHinh.sc.nextInt();
+        CauHinh.sc.nextLine();
+        System.out.print("Ho ten: ");
+        this.hoTen = CauHinh.sc.nextLine();
+        System.out.print("Gioi tinh (nam: 0, nu: 1): ");
+        this.gioiTinh = CauHinh.sc.nextByte();
+        CauHinh.sc.nextLine();
+        System.out.print("Ngay sinh (dd/MM/yyyy): ");
+        this.ngaySinh = LocalDate.parse(CauHinh.sc.nextLine(), DateTimeFormatter.ofPattern(CauHinh.FOMAT_DATE));
+    }
+
+    public void hienThi() {
+        System.out.printf("CCCD: %s\nHo ten: %s\nGioi tinh (nam: 0, nu: 1): %d\nNgay sinh: %s\n", cccd, hoTen, gioiTinh, ngaySinh);
     }
 
     /**
@@ -68,7 +88,7 @@ public class Nguoi {
     /**
      * @param gioiTinh the gioiTinh to set
      */
-    public void setGioiTinh(int gioiTinh) {
+    public void setGioiTinh(byte gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 

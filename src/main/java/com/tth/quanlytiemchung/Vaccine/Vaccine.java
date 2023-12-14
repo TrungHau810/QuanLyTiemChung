@@ -1,5 +1,7 @@
 package com.tth.quanlytiemchung.Vaccine;
 
+import com.tth.quanlytiemchung.Info.CauHinh;
+
 /**
  *
  * @author Trung Hau
@@ -18,6 +20,13 @@ public class Vaccine {
     public Vaccine(String tenVaccine, String xuatXu) {
         this.tenVaccine = tenVaccine;
         this.xuatXu = xuatXu;
+    }
+
+    public void nhapInfo() {
+        System.out.print("Ten vaccine: ");
+        this.tenVaccine = CauHinh.sc.nextLine();
+        System.out.print("Xuat xu: ");
+        this.xuatXu = CauHinh.sc.nextLine();
     }
 
     public void hienThi() {
